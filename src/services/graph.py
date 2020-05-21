@@ -94,4 +94,7 @@ class Graph:
 
             current_vertex = previous_vertices[current_vertex]
 
+        if len(path) == 1 and source != dest:
+            raise AssertionError("Such nodes don't connect")
+
         return path, final_distance
