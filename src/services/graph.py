@@ -53,9 +53,9 @@ class Graph:
 
     @property
     def neighbours(self):
-        neighbours = {vertex: set() for vertex in self.vertices}
+        neighbours = {vertex: {} for vertex in self.vertices}
         for edge in self.edges:
-            neighbours[edge.start].add((edge.end, edge.cost))
+            neighbours[edge.start][edge.end] = edge.cost
 
         return neighbours
 
@@ -74,7 +74,7 @@ class Graph:
             vertices.remove(current_vertex)
             if distances[current_vertex] == inf:
                 break
-            for neighbour, cost in neighbours[current_vertex]:
+            for neighbour, cost in neighbours[current_vertex].items():
                 alternative_route = distances[current_vertex] + cost
                 if alternative_route < distances[neighbour]:
                     distances[neighbour] = alternative_route
@@ -85,10 +85,9 @@ class Graph:
         while current_vertex:
             path.appendleft(current_vertex)
 
-            for neighbour in neighbours[current_vertex]:
-                if neighbour[0] == path[1]:
-                    final_distance += neighbour[1]
-                    break
+            last_spot = path[1] if len(path) > 1 else None
+            if neighbour_distance := neighbours[current_vertex].get(last_spot):
+                final_distance += neighbour_distance
 
             current_vertex = previous_vertices[current_vertex]
 
