@@ -81,8 +81,15 @@ class Graph:
                     previous_vertices[neighbour] = current_vertex
 
         path, current_vertex = deque(), dest
+        final_distance = 0
         while current_vertex:
             path.appendleft(current_vertex)
+
+            for neighbour in neighbours[current_vertex]:
+                if neighbour[0] == path[1]:
+                    final_distance += neighbour[1]
+                    break
+
             current_vertex = previous_vertices[current_vertex]
 
-        return path
+        return path, final_distance
