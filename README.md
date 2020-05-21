@@ -8,6 +8,7 @@
 
 ##### Introduction to A*
 https://theory.stanford.edu/~amitp/GameProgramming/AStarComparison.html
+https://www.redblobgames.com/pathfinding/a-star/introduction.html
 
 ### Observações
 
