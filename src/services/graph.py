@@ -62,9 +62,11 @@ class Graph:
 
     def dijkstra(self, source, dest):
         vertices = self.vertices.copy()
-        neighbours = self.neighbours.copy()
 
         assert source in vertices, "Such source node doesn't exist"
+        assert dest in vertices, "Such destination node doesn't exist"
+
+        neighbours = self.neighbours.copy()
 
         distances = {vertex: inf for vertex in vertices}
         previous_vertices = {vertex: None for vertex in vertices}
