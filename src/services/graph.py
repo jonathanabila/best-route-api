@@ -56,6 +56,7 @@ class Graph:
         neighbours = {vertex: {} for vertex in self.vertices}
         for edge in self.edges:
             neighbours[edge.start][edge.end] = edge.cost
+            neighbours[edge.end][edge.start] = edge.cost
 
         return neighbours
 
