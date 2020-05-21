@@ -1,0 +1,22 @@
+# .coveragerc
+
+[run]
+branch = True
+
+[report]
+show_missing = True
+omit =
+    build/*
+    tests/*
+    setup.py
+    */__init__.py
+    */nose/*
+    */pkg_resources/*
+    */six.py
+    */nose2/*
+    */coverage/*
+    */cov_core.py
+    venv/*
+    node_modules/*
+exclude_lines =
+    if __name__ == .__main__.:
