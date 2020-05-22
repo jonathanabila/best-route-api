@@ -1,11 +1,13 @@
-def main(grapher, file, file_name: str) -> None:
+def main(grapher, file, inputer, file_name: str) -> None:
     routes = file.get_file_content(file_name, separator=",")
     graph = grapher(routes)
 
     while True:
-        best_route, price = graph.calculate("ORL", "BRC")
+        source, destination = inputer.get_input("Please enter the route (*-*): ")
+        best_route, price = graph.calculate(source, destination)
         print(f"Best route: {best_route} > {price}")
-        break
+
+        print()
 
 
 if __name__ == "__main__":
@@ -13,6 +15,7 @@ if __name__ == "__main__":
 
     from methods.dijsktra import Dijsktra
     from services.file import File
+    from services.input import Input
 
     parser = argparse.ArgumentParser(description="Find the least expensive path")
     parser.add_argument(
@@ -25,4 +28,4 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    main(Dijsktra, File(), args.file_name)
+    main(Dijsktra, File(), Input(), args.file_name)
