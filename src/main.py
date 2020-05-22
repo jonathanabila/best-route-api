@@ -1,25 +1,28 @@
-from src.services.graph import Graph
+def main(grapher, file, file_name: str) -> None:
+    routes = file.get_file_content(file_name, separator=",")
+    graph = grapher(routes)
+
+    while True:
+        best_route, price = graph.calculate("ORL", "BRC")
+        print(f"Best route: {best_route} > {price}")
+        break
+
 
 if __name__ == "__main__":
-    import timeit
+    import argparse
 
-    graph = Graph(
-        [
-            ("GRU", "BRC", 10),
-            ("BRC", "SCL", 5),
-            ("GRU", "CDG", 75),
-            ("GRU", "SCL", 20),
-            ("GRU", "ORL", 56),
-            ("ORL", "CDG", 5),
-            ("SCL", "ORL", 20),
-        ]
+    from methods.dijsktra import Dijsktra
+    from services.file import File
+
+    parser = argparse.ArgumentParser(description="Find the least expensive path")
+    parser.add_argument(
+        "-f",
+        "--file_name",
+        dest="file_name",
+        type=str,
+        help="relative path to the file",
     )
 
-    print(graph.dijkstra("GRU", "CDG"))
+    args = parser.parse_args()
 
-    print(
-        timeit.timeit(
-            "graph=Graph([('GRU', 'BRC', 10),('BRC', 'SCL', 5),('GRU', 'CDG', 75),('GRU', 'SCL', 20),('GRU', 'ORL', 56),('ORL', 'CDG', 5),('SCL', 'ORL', 20)]); graph.dijkstra('GRU', 'CDG')",
-            setup="from src.services.graph import Graph",
-        )
-    )
+    main(Dijsktra, File(), args.file_name)
