@@ -3,6 +3,8 @@
 
 from collections import deque, namedtuple
 
+from exceptions.invalid_node import InvalidNode
+
 
 # we'll use infinity as a default distance to nodes.
 inf = float("inf")
@@ -18,7 +20,7 @@ class Graph:
         # let's check that the data is right
         wrong_edges = [i for i in edges if len(i) != 3]
         if wrong_edges:
-            raise ValueError("Wrong edges data: {}".format(wrong_edges))
+            raise InvalidNode(f"Wrong edges data: {wrong_edges}")
 
         self.edges = [make_edge(*edge) for edge in edges]
 
@@ -45,7 +47,7 @@ class Graph:
         node_pairs = self.get_node_pairs(n1, n2, both_ends)
         for edge in self.edges:
             if [edge.start, edge.end] in node_pairs:
-                return ValueError("Edge {} {} already exists".format(n1, n2))
+                raise InvalidNode(f"Edge {n1} {n2} already exists")
 
         self.edges.append(Edge(start=n1, end=n2, cost=cost))
         if both_ends:
@@ -63,8 +65,10 @@ class Graph:
     def dijkstra(self, source, dest):
         vertices = self.vertices.copy()
 
-        assert source in vertices, "Such source node doesn't exist"
-        assert dest in vertices, "Such destination node doesn't exist"
+        if source in vertices:
+            raise InvalidNode("Such source node doesn't exist")
+        if dest in vertices:
+            raise InvalidNode("Such destination node doesn't exist")
 
         neighbours = self.neighbours.copy()
 
@@ -95,6 +99,6 @@ class Graph:
             current_vertex = previous_vertices[current_vertex]
 
         if len(path) == 1 and source != dest:
-            raise AssertionError("Such nodes don't connect")
+            raise InvalidNode("Such nodes don't connect")
 
         return path, final_distance
