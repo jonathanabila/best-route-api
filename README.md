@@ -1,3 +1,14 @@
+### Exceptions
+To facilitate error handling, all errors that have some information about the application have their description below 
+and which code accompanies it. Thus, messages can be improved or changed, but the code will never be replaced or 
+changed if its meaning is not exactly as described.
+
+1. Wrong edges data - The information used to build the graphic contains invalid information.
+2. Edge n1 n2 already exists - The edge n1 and n2 is already registered.
+3. Such source node doesn't exist - The source node is not registered.
+4. Such destination node doesn't exist - The destination node is not registered.
+5. Such nodes don't connect -Such nodes don't connect.
+
 ### Algoritmos considerados
 
 1. [Dijkstra](https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm)
