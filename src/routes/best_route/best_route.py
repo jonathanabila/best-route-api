@@ -27,5 +27,5 @@ class BestRoute(restful.Resource):
 
         :return:
         """
-        graph.add_edge(args["source"], args["destination"], args["cost"])
+        graph.add_edge_path(args["source"], args["destination"], args["cost"])
         return jsonify({"status": "added", "route": {**args}})
