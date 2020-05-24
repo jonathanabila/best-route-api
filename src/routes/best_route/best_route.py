@@ -2,8 +2,8 @@ import flask_restful as restful
 from flask import jsonify
 from webargs.flaskparser import use_args
 
-from src.schemas.best_route import BestRouteSchema, NewRouteSchema
-from src.domain.graph import Graph
+from schemas.best_route import BestRouteSchema, NewRouteSchema
+from domain.graph import Graph
 
 from services.logger import new
 

@@ -15,6 +15,8 @@ LOG = new(__name__)
 app = Flask(__name__)
 CORS(app)
 
+app.config["PROPAGATE_EXCEPTIONS"] = True
+
 
 def register_blueprints(app_blueprint):
     LOG.info("Setup error handler")
@@ -31,4 +33,4 @@ def run_server():
 
     register_blueprints(app)
     LOG.info("Starting app")
-    app.run(host="0.0.0.0", port=port)
+    app.run(host="0.0.0.0", port=port, debug=True)
