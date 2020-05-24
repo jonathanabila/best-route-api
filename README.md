@@ -7,6 +7,9 @@
 ### How to run the project
 `$ docker-compose up`
 
+#### Dependency
+You must place the file `input-routes.csv` inside the dist directory.
+
 ### How to use the API
 
 #### GET /best_route

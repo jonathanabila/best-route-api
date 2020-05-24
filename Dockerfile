@@ -15,6 +15,8 @@ ADD src /code/
 RUN pip install -r requirements.txt
 ADD . /code/
 
+ADD dist /dist
+
 COPY init.sh /usr/local/bin/
 
 RUN chmod u+x /usr/local/bin/init.sh
