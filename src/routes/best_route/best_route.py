@@ -8,18 +8,21 @@ LOG = new(__name__)
 
 
 class BestRoute(restful.Resource):
-    @use_args(BestRouteSchema)
+    @use_args(BestRouteSchema, location="querystring")
     def get(self, args):
         """
 
         :return:
         """
+
+        print(args)
         pass
 
-    @use_args(NewRouteSchema)
+    @use_args(NewRouteSchema, location="json")
     def post(self, args):
         """
 
         :return:
         """
+        print(args)
         pass
