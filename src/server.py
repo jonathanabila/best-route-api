@@ -7,7 +7,8 @@ from flask import Flask
 from flask_cors import CORS
 
 from services.logger import new
-from functions.error_handler.error_handler import setup_error_handler
+from routes.error_handler.error_handler import setup_error_handler
+from routes.best_route.blueprint import setup_blueprint as setup_blueprint_best_route
 
 LOG = new(__name__)
 
@@ -21,7 +22,7 @@ def register_blueprints(app_blueprint):
     LOG.info("Error handler registered")
 
     LOG.info("Registering blueprints")
-
+    app_blueprint.register_blueprint(setup_blueprint_best_route())
     LOG.info("Blueprints registered")
 
 

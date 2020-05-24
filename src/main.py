@@ -13,7 +13,7 @@ def main(grapher, file, inputer, file_name: str) -> None:
 if __name__ == "__main__":
     import argparse
 
-    from methods.dijsktra import Dijsktra
+    from domain.dijsktra import Dijsktra
     from services.file import File
     from services.input import Input
 
