@@ -65,9 +65,9 @@ class Graph:
     def dijkstra(self, source, dest):
         vertices = self.vertices.copy()
 
-        if source in vertices:
+        if source not in vertices:
             raise InvalidNode("Such source node doesn't exist")
-        if dest in vertices:
+        if dest not in vertices:
             raise InvalidNode("Such destination node doesn't exist")
 
         neighbours = self.neighbours.copy()
