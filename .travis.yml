@@ -1,0 +1,15 @@
+language: python
+cache:
+  directories:
+  - "$HOME/.cache/pip"
+python:
+  - "3.8"
+env:
+  - CODECOV_TOKEN=$CODECOV_TOKEN
+  - TEST=TRUE
+install:
+  - pip install -r requirements.txt
+  - pip install -r requirements-dev.txt
+script:
+  - nose2 -t src/ --with-coverage
+  - codecov
