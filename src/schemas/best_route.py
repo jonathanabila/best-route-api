@@ -1,4 +1,4 @@
-from marshmallow import Schema, fields
+from marshmallow import Schema, fields, validate
 
 
 class NewRouteSchema(Schema):
@@ -9,9 +9,9 @@ class NewRouteSchema(Schema):
         - cost (int)
     """
 
-    source = fields.Str()
-    destination = fields.Str()
-    cost = fields.Int()
+    source = fields.Str(validate=validate.Length(min=1))
+    destination = fields.Str(validate=validate.Length(min=1))
+    cost = fields.Int(validate=validate.Range(min=0))
 
 
 class BestRouteSchema(Schema):
@@ -21,5 +21,5 @@ class BestRouteSchema(Schema):
         - destination (str)
     """
 
-    source = fields.Str()
-    destination = fields.Str()
+    source = fields.Str(validate=validate.Length(min=1))
+    destination = fields.Str(validate=validate.Length(min=1))
