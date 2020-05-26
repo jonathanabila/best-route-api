@@ -25,3 +25,9 @@ class TestGraph(TestCase):
         mock_file.return_value.add_line.assert_called_with(
             "source,destination,1", "file_path"
         )
+
+    @patch("src.domain.graph.Dijsktra.add_edge")
+    def test_add_edge_path(self, mock_dijsktra):
+        self.assertIsNone(self.graph.add_edge_path("source", "destination", 1))
+        mock_dijsktra.assert_called_with("source", "destination", 1)
+        self.graph._persist_edge("source", "destination", 1)
