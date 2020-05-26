@@ -15,6 +15,16 @@ services:
     command:
       - init.sh
 
+  terminal:
+    container_name: terminal
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    networks:
+      - network
+    command:
+      - init-terminal.sh
+
 volumes:
   data01:
     driver: local

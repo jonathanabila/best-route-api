@@ -5,10 +5,13 @@
  - Docker-Compose
  
 ### How to run the project
-`$ docker-compose up`
+`$ docker-compose up api`
+
+if you want to raise the environment with the interface in the terminal you must do:
+`$ docker-compose run terminal`
 
 #### Dependency
-You must place the file `input-routes.csv` inside the dist directory.
+You must place the file `input-routes.csv` inside the dist directory for both interfaces.
 
 ### How to use the API
 

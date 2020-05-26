@@ -18,7 +18,9 @@ ADD . /code/
 ADD dist /dist
 
 COPY init.sh /usr/local/bin/
+COPY init-terminal.sh /usr/local/bin/
 
 RUN chmod u+x /usr/local/bin/init.sh
+RUN chmod u+x /usr/local/bin/init-terminal.sh
 
 EXPOSE 2222 5000
