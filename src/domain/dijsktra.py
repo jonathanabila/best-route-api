@@ -9,10 +9,6 @@ class Dijsktra:
     def parse_edger(edges):
         return [tuple(i) for i in edges]
 
-    @staticmethod
-    def _validate_route(self, route):
-        pass
-
     def calculate(self, source, destination):
         path, cost = self._graph.dijkstra(source, destination)
         return " - ".join(path), cost
