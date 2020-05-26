@@ -87,6 +87,11 @@ The integration allows a test coverage report along with pull requests, as well 
 3. [Greedy Best-First-Search](https://www.mygreatlearning.com/blog/best-first-search-bfs/)
 
 
+The algorithm I used was Dijkstra, so I could read it is the only one that guarantees 100% of searches the shortest 
+path will be found, so I chose to stay with it.However, I would go deeper into A start in search of performance.
+
+TODO: include the quote that talks about the accuracy
+
 ### Bibliography
 
 ##### Introduction to A*
