@@ -34,3 +34,7 @@ def run_server():
     register_blueprints(app)
     LOG.info("Starting app")
     app.run(host="0.0.0.0", port=port, debug=True)
+
+
+if __name__ == "__main__":
+    run_server()
