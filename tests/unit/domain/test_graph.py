@@ -26,8 +26,10 @@ class TestGraph(TestCase):
             "source,destination,1", "file_path"
         )
 
+    @patch("src.domain.graph.Graph._persist_edge")
     @patch("src.domain.graph.Dijsktra.add_edge")
-    def test_add_edge_path(self, mock_dijsktra):
+    def test_add_edge_path(self, mock_dijsktra, mock_persist_edge):
+        mock_persist_edge.return_value = MagicMock()
         self.assertIsNone(self.graph.add_edge_path("source", "destination", 1))
         mock_dijsktra.assert_called_with("source", "destination", 1)
-        self.graph._persist_edge("source", "destination", 1)
+        mock_persist_edge.assert_called_with("source", "destination", 1)
